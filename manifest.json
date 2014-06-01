@@ -1,0 +1,79 @@
+{
+   "manifest_version": 2,
+   "minimum_chrome_version": "18",
+   "background": {
+		"page": "background.html"
+   },
+   "page_action": {
+      "default_popup": "popup.html",
+      "default_icon": "img/16dirty.png"
+   },
+	"web_accessible_resources": [
+		"img/ajax-loader.gif",
+		"img/application-dock.png",
+		"img/application-dock-180.png",
+		"img/arrow-180-green.png",
+    "img/arrow-circle-315.png",
+		"img/arrow-green.png",
+		"img/category.png",
+    "img/chart_organisation.png",
+		"img/chevron.png",
+		"img/chevron-expand.png",
+		"img/cross.png",
+    "img/direction.png",
+		"img/disambiguation.png",
+		"img/exclamation.png",
+    "img/exclamation-red.png",
+		"img/external.png",
+		"img/infocard.png",
+    "img/locked.png",
+		"img/navigation-green.png",
+		"img/pinOut.png",
+    "img/pinIn.png",
+		"img/retweet.png",
+    "img/tick-circle.png",
+    "img/unlocked.png",
+    
+ 		"tip.html",
+    "img/cross-small-5.png",
+    "img/speaker-volume-low2.png",
+    "img/flags/*.png",
+    "img/wikimedia/skins-1.5/vector/images/external-link-ltr-icon.png",
+    "img/navigation-000-button.png",
+    "img/navigation-090-button.png",
+    "img/navigation-180-button.png",
+    "img/navigation-270-button.png",
+    "img/globe.png",
+
+    
+    "img/branding/bing/bing.png",
+    "img/branding/Flickr/flickr12.png",
+    "img/branding/Google/small-logo.png",
+    "img/branding/twitter/logo_twitter_bird_12_allblue.png",
+    "img/branding/wikimedia/Small_icon_wikimedia.png",
+    "img/branding/Yahoo/yahoo.png",
+    
+		"doc/releasenotes.txt"
+	],
+   
+   "content_security_policy": "script-src 'self' https://www.google.com https://secure.flickr.com; object-src 'self'",
+   
+   
+   "name": "Simple Highlighter",
+   "version": "2.1.7.2",
+   "description": "Highlights, annotates, translates, full or quick references (eg: wordreference.com, wikipedia), speech, and more",
+   "options_page": "options.html",
+
+   "content_scripts": [ {
+      "matches": ["http://*/*", "https://*/*", "file://*"],
+	  "js": [ "js/helper.js", "js/localstorage.js", "js/shortcut/shortcut.js", "js/css2.js", "js/caja/plugin/html4-defs.js", "js/caja/plugin/html-sanitizer.js", "js/tippopup.js", "js/lookuppopup.js", "js/executescript.js", "js/simplehighlight.js"],
+	  "all_frames": true,
+      "run_at": "document_idle"
+   } ],
+
+	"icons": { "16": "img/16.png",
+			   "48": "img/48.png",
+			  "128": "img/128.png" },
+
+    "permissions": [ "<all_urls>", "tts", "contextMenus", "tabs"]
+}

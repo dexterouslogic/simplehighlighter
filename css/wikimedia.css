@@ -1,0 +1,34 @@
+/* Examples - remove default table formating */
+.example {
+  border:0;
+}
+
+.example TD, .example TH {
+  border: 0;
+  margin-bottom:1em;
+  margin-top:1em;
+  padding:0.5em;
+}
+
+table.terms{
+  background:white;
+  border:0pt;
+}
+
+table.terms td {
+ vertical-align: top;
+ text-align: left;
+}
+
+table.terms td {
+ padding-bottom: 1em;
+}
+
+table.terms td.label {
+ padding-right: 1em;
+}
+
+table.terms tr.header td {
+ font-weight: bold;
+ font-size: medium;
+}

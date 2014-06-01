@@ -1,0 +1,129 @@
+SIMPLE HIGHLIGHTER 2 - Less Simple, More Highlighter.
+by einzelkind.apps@gmail.com
+
+NEW!! - ACTUAL DOCUMENTATION, at https://docs.google.com/document/d/19LAVlRcmRX6rNhLlvhrso-S2w18zfqAEjBoZ-J4Yhpo/edit
+
+WHAT IS SIMPLE HIGHLIGHTER
+
+Fundamentally, Simple Highlighter is a Chrome extension that enables you to select ranges of text on a page, and highlight them with a colour. This highlight can then have a note associated with it (a short piece of text). A summary of the highlights and their notes can be displayed by clicking on the popup dialog'). Furthermore, Simple Highlighter can try to remember these highlights and notes, so when you return to the page they are shown again.
+
+WHAT DOES IT COST
+
+Pay what you like. Of course any tokens of gratitude are massively welcome! My donations box is at https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TXVYJTNXQKPCY
+
+IF YOU READ NOTHING ELSE, READ THIS PART
+
+* To completely disable or uninstall this (or any other) extension, either go to chrome://extensions , or go to Extensions on the Tools menu,
+ or right click on the icon to the right of the URL (choosing disable from this menu disables the ENTIRE extension ALWAYS).
+
+* Many more options, including colours, styles and shortcuts, are available by right clicking on the highlighter icon to the right of the URL and choosing options (if available), OR via the 'menu button' -> 'tools' -> 'extensions' page, OR at the URL chrome://extensions (these all lead to the same place),
+
+* Extensions are disabled on Chrome Extension Gallery pages (ie: this page), but enabled everywhere else. 
+
+CHANGELOG
+
+2.1.7.2 (2012/02/08)
+  Manifest 2
+
+2.1.6.8 (2012/18/06):
+  Local file support
+
+2.1.6.7 (2012/04/06):
+  Add source language flag to translation icons
+  Fix export highlights to file and Save Summary to file in Chrome 19.
+
+2.1.6.6 (2012/06/04):
+  Documentation link on options page
+
+2.1.6.5 (2012/04/04):
+  reinstated flickr support
+  removed yahoo support
+  fixed translation/speech in popup
+
+2.1.6.4 (2012/19/01):
+  Note storage bug, message errors, replay audio with google text to speech via popup
+  NB: Highlights Import via the popup doesn't work, due to Chrome bug 104222 (http://code.google.com/p/chromium/issues/detail?id=104222), there's nothing I can do about it until it's fixed.
+
+2.1.6 (2011/11/10):
+  Added Google Translate warning, disable it as default.
+  Donate button.
+  Native Text to Speech (requires new permission)
+  Menu reorganise, display shortcuts
+
+2.1.5 (2011/11/01):
+  Add Microsoft Translate option and default to it instead of Google Translate.
+  Demote/Remove all Google services which don't want to be framed, and promote Bing. (click Restore Default Templates in Options)
+  Instapaper & Google Mobilizers
+  Bug fixes/cleanups/preparations.
+
+2.1.3 (2011/07/23):
+  Strikeout/italic/bold/underline/uppercase highlight styles.
+  Option to disable colour & shadow for a highlight style.
+
+2.1.2 (2011/07/18):
+  Highlights can be enabled/disabled (hidden in the context menu), via the checkbox next to its number on the options page.
+
+2.1.1.4 (2011/06/11):
+  Tab in context menu ignored in Chrome 12. Replace with square brackets.
+  Restore audio playing (text to speech) on Chrome 12. Maybe Chrome 11 too.
+
+2.1.1.3 (2011/04/23):
+  Fix some shortcut keys in popup
+  'Framekiller' protection option for lookup sessions
+  Bugs bugs bugs
+
+2.1.1.2 (2011/04/19):
+  Fix popup window not remembering per-item translation & note visibility on each open
+
+2.1.1.1 (2011/04/18):
+  Fix popup window find item close window behaviour
+
+2.1.1 (2011/04/14):
+  Default translate style is replace not append
+  Show source language of translation as flag
+  Popup branding placement changes
+  Wikimedia parser more intelligent with similarly named articles
+  Import/Export as XML (Don't use this feature yet, it has some problems with strange characters. It's just for debugging/curiosity at the moment)
+  Strip trailing/leading spaces on highlights & snippets
+  Quick Translate Reset button
+  Bug fixes, removed accidental logging info
+
+2.1: (2011/04/02):
+  Database Import/Export to file/URL (NB: consider this beta. can't be 100% sure it's working)
+  Per-Page highlights Import/Export to URL
+  Storage format optimisations
+  Omnibar page icon translation alternate styles
+  Text to speech uses Google instead of Bing by default
+  (Poor mans) cache for speech (no longer reloads each time)
+  Detect language before speech by default
+  Updated images/flags
+  Bugs fixed/generated, including workaround for webkit bug 24078 (disappearing tip when not at the head of the history stack)
+  
+2.0.4: (2011/03/21):
+  shrink unpopulated tip (expand by mouseover it)
+  reenable speech for tip (chrome bug still unfixed).
+  lookup bar colours changed.
+  reset tip specific shortcut button now works.
+  reset all defaults now includes tip settings.
+  
+2.0.3: (2011/03/19): restore popup select anim, more robust speech stuff (chinese simplified/traditional now work), more google/bing branding.
+2.0.2: (2011/03/10) fixed race condition in tip content display meaning sometimes didn't display (or displayed briefly). Preparations for when/if bug #68135 is fixed.
+2.0.1.3: (2011/03/02) css update
+2.0.1.2: (2011/03/01): press 'Enter' to query template in lookup template selector whilst it has focus.
+2.0.1.1: (2011/02/27): lengthen unique ids
+2.0.1: (2011/02/27): option page handling of utf8, mediawiki tip sizing & infobox cleanup
+2.0.0: (2011/02/21): lots of bug fixes, lookup sessions, tips, cosmetics. major update, bunches of stuff.
+1.1.0: (2010/12/24): more shortcuts in popup, built-in language translations, relax incognito restrictions, bugfixes, cosmetics
+1.0.8: (2010/12/09): popup metrics for all font sizes (though currently fixed @ 10pt)
+1.0.7: (2010/12/06): popup metrics, cached options images
+1.0.6: (2010/12/03): remember popup scroll pos
+1.0.5: popup hover indicator method
+1.0.4: autohide icons in popup
+1.0.3: removeAllHighlights option, fix focusing and scrolling from clicks in popup, select text from popup, ctrl to remain open in popup (more checks)
+1.0.2: popup pin
+1.0.1: update tooltips on options page
+
+ADVERT
+
+Check out my other Chrome Extension, 'CommentBlocker'
+(https://chrome.google.com/extensions/detail/lhkjhnbkeibefoijmacgnnkddlkkmjaf?hl=en-GB)

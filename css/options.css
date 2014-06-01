@@ -1,0 +1,241 @@
+body {
+	/*font: 14px serif;*/
+	font-family: sans-serif;
+	/*background-color: #ebeff9;*/
+	/*background-color: LightSteelBlue;*/
+	background-color: pink;
+}
+
+.logo {
+	text-align: center;
+}
+
+.logotext{
+	text-shadow: 2px 2px 4px white;
+}
+
+.logotexthighlight{
+	background-color: rgba(251, 202, 12, 0.8);
+	border-radius: 4px;
+	-webkit-box-shadow: rgba(251, 202, 12, 1) 0px 0px 30px;
+}
+
+
+.documentation{
+	position: absolute; 
+	top: 1%; 
+	right: 1%;
+	
+	font-size: small;
+}
+
+
+/*******************/
+
+#tabs {
+	text-align: center;
+	margin-bottom: 9px;
+	font-size: 12pt;
+}
+
+.tab {
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#dddddd));
+	/*-webkit-box-shadow: #90a4bE 20px 20px 40px;*/
+	-webkit-border-radius: 20px;
+	border-bottom-left-radius: 0px 0px;
+	border-bottom-right-radius: 0px 0px;
+	border-bottom-style: none;
+	padding: 0.4em;
+	border: thin solid black;
+	
+	font-size: 1em;
+	opacity: 0.3;
+	
+	-webkit-transition: font-size 0.2s ease;
+	-webkit-transition: opacity 1s ease;
+}
+
+.tab a{
+	text-decoration: none;
+}
+
+.selectedtab {
+	font-size: 1.5em;
+	opacity: 1;
+
+	font-weight: bold;
+}
+
+/*******************/
+
+.page{
+}
+
+.content {
+	border: thin solid black;
+	background-color: white;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#dddddd));
+	margin: 0px auto 20px auto;
+	width: 800px;
+	padding: 12px;
+	/*-webkit-box-shadow: #90a4bE 20px 20px 40px;*/
+	-webkit-box-shadow: #AF606B 10px 10px 20px;
+	-webkit-border-radius: 20px;
+}
+
+.option_name {
+	/*width: auto;*/
+	font-weight: bold;
+	/*text-decoration: underline;*/
+	text-align: center;
+}
+
+.option_picker {
+	padding-left: 4px;
+	padding-bottom: 4px;
+}
+
+.icon{
+	vertical-align: middle;
+}
+
+.showHighlightTransition{
+	-webkit-transition: opacity 0.5s ease;
+}
+
+.labelFontStyle{
+	margin-right: 0.5em;
+}
+
+/*******************/
+
+.notice{
+	color:grey;
+	font-style: italic;
+	font-weight: normal;
+	font-size: smaller;
+	
+	margin-bottom: 1px;
+	padding-left: 4px;
+	border-left: 5px solid lightgrey;
+}
+
+.subgroup1{
+	margin-left: 8px;
+	padding-left: 4px;
+	border-left: 5px solid lightGrey;
+}
+
+.fullwidth{
+	width: 100%;
+}
+
+.modifierlabel{
+	margin-right: 0.4em;
+}
+
+.sublabel{
+	display: block;
+	font-weight:bold;
+	font-size: 83%;
+	margin-top: 0.4em;
+}
+
+/*******************/
+
+.labelmid{
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+}
+
+/*******************/
+
+
+.storedHighlightOptionNameCell{
+	width: 153px;
+}
+
+.hiddenfileinput{
+	visibility: hidden;
+	position: fixed;
+}
+
+/*******************/
+
+.aboutheader{
+	display: none;
+	text-align:right; 
+	font-size: smaller;
+}
+
+.aboutfooter{
+	text-align: center; 
+	margin-top: 16px;
+}
+
+/***************************/
+
+.maincontrols {
+	text-align: center;
+}
+
+.restore{
+	text-align: right;
+	font-size: small;
+}
+
+/***************************/
+
+.footer {
+	text-align: center;
+	font-size: small;
+}
+.option_highlight 
+{
+	font-size: 7em;
+	text-decoration: none;
+}
+
+/*used by dynamic**************************/
+
+.shortcutkey {
+	width: 6em;
+}
+.reset {
+	text-align: center;
+	float:right;
+}
+
+.mouseactivationwarning{
+	color:red;
+	font-style: italic;
+	font-weight: bold;
+	font-size: smaller;
+	
+	margin-bottom: 1px;
+	padding-left: 4px;
+	border-left: 5px solid red;
+}
+/***************************/
+
+.disabledTemplate {
+	color: grey;
+}
+.groupStartTemplate {
+	color: blue;
+}
+.groupEndTemplate {
+	color: green;
+}
+.defaultTemplate {
+	background-color: #f77;
+}
+.defaultButton {
+	color: red;
+}
+
+/***************************/
+
+.translateAnything{
+	color: green;
+}

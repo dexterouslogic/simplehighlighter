@@ -1,0 +1,458 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Options - Simple Highlighter</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/localstorage.js"></script>
+	
+    <script type="text/javascript" src="js/jscolor/jscolor.js"></script>
+	
+    <script type="text/javascript" src="js/parsers/bing.js"></script>
+    <script type="text/javascript" src="js/parsers/mediawiki.js"></script>
+    <script type="text/javascript" src="js/parsers/googleapi.js"></script>
+    
+	<script type="text/javascript" src="js/options.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/options.css" />
+</head>
+
+<body>
+	<h1 class="logo">
+		<img alt="Simple Highlighter Logo" id="logoimage" title="Hi Gemma, wanna play Mario?" src="img/128.png" />
+		<br/>
+		<span class="logotext"><span class="logotexthighlight">Simple</span> Highlighter 2.1.7.2</span>
+	</h1>
+	
+	<div class="documentation">
+		<a href="https://docs.google.com/document/d/19LAVlRcmRX6rNhLlvhrso-S2w18zfqAEjBoZ-J4Yhpo/edit">Documentation</a>
+	</div>
+
+    <div id="tabs">
+		<span id="tab1" class="tab"><a href="#">General</a></span>
+		<span id="tab2" class="tab"><a href="#">Appearance</a></span>
+		<span id="tab3" class="tab"><a href="#">Lookup Session</a></span>
+		<span id="tab4" class="tab"><a href="#">Tip</a></span>		
+		<span id="tab5" class="tab"><a href="#">Stored Highlights</a></span>		
+		<span id="tab6" class="tab"><a href="#">About</a></span>		
+	</div>
+	
+	<div id="page1" class="page">
+    	<div class="content">
+           	<table style="width: 100%">
+			    <tr>
+				    <td class="option_name">General</td>
+                    <td>
+					    <div class="option_picker">
+					        <input id="inputContextMenu" type="checkbox"/>
+	            	        <label for="inputContextMenu" title="Show item in the menu accessed when the right mouse button is clicked, allowing access to main functions.">Show in Context Menu</label>
+						    <br/>
+					        <input id="inputWarnOnLeave" type="checkbox"/>
+				    	    <label for="inputWarnOnLeave" title="Before leaving a page that contains highlights which are unsaved (and thus would be lost), a warning notice is shown, allowing you to cancel the action.">Warn me if unsaved highlights remain before leaving page (<img src="img/16dirty.png" class="icon">)</label>
+						    <br/>
+<!--				        <input id="inputIconPageAction" type="checkbox"/>
+				    	    <label for="inputIconPageAction" title="Shows an icon to the right side of the URL indicating there are highlights on the current page, and allows access to related functions.">Show icon in omnibar for highlight snippets and notes (<img src="img/16.png" class="icon">)</label>
+							-->
+					        <input id="inputAutosave" type="checkbox"/>
+				    	    <label for="inputAutosave"  title="Saves highlights to this storage type every time you make a modification. If you have manually saved your highlights, then its specific storage type will be automatically updated instead.">Automatically save highlights to</label>
+                            <select id="selectAutosaveStorage" title="Note that if highlights already exist in one of the databases, the copy in the existing database will be updated instead of location chosen here.">
+		                        <option value="session">temporary</option>
+		                        <option value="local">persistent</option>
+                            </select>
+				    	    <label for="inputAutosave">storage (<img src="img/disk-green.png" class="icon"/>)</label>
+						    <br/>
+							<label for="selectPageIcon">Show icon in Omnibar</label>
+							<select id="selectPageIcon" title="If the icon is only conditionally present, you may have to add a highlight to access the import/export buttons it provides.">
+								<option value="always">always</option>
+		                        <option value="yes">only when highlights present</option>
+		                        <option value="no">never</option>
+							</select>
+							<label for="selectPageIcon">(<img src="img/16.png" class="icon">)</label>
+							<br/>
+
+							<label for="selectMobilizer">Simplify page format using</label>
+							<select id="selectMobilizer">
+								<option value="gwt">Google</option>
+		                        <option value="instapaper">Instapaper</option>
+							</select>
+							<label for="selectMobilizer">mobilizer service</label>
+							
+							<!-- hidden because option disabled -->
+							<span style="display:none">
+								<input id="inputDefaultShowTransHLs" type="checkbox"/>
+								<label for="inputDefaultShowTransHLs" title="Shows all the highlight snippets translated into your desired language by default when the popup window is shown. If this is not selected you must choose the appropriate icon next to the snippet to display the translation. Translated snippets are shown italicised and with a blue index.">Show all translated snippets in popup window by default (<img src="img/allTrans.png" class="icon"/>)</label>
+								<br/>
+							</span>
+						</div>
+				    </td>
+				</tr>
+							
+			    <tr>
+				    <td>
+					    <div class="option_name">Omnibar Popup Window</div>
+				    </td>
+                    <td>
+						<div class="option_picker">	
+							<input id="inputDefaultShowNotes" type="checkbox"/>
+	            	        <label for="inputDefaultShowNotes" title="Reveals all notes associated with all highlights by default when the popup window is shown. If this is not selected you must select the appropriate icon next to the snippet to reveal the note. Highlights with associated notes are shown with an orange index.">Reveal all notes by default (<img src="img/allNotes.png" class="icon"/>)</label>
+							<br/>
+							<label for="textSnippetMax">Highlight snippets can contain upto</label>
+							<input id="textSnippetMax" type="text" style="width: 4em" title="Maximum amount of characters chosen from the highlight to use as the snippet. Note that if a translated note is created from a highlight, the full amount of characters are always used."/>
+							<label for="textSnippetMax">character(s)</label>
+							<br/>
+							<label for="selectTranslationStyle">Translated snippets are</label>
+							<select id="selectTranslationStyle">
+		                        <option value="replace">substituted with</option>
+		                        <option value="append">appended to</option>
+							</select>
+							<label for="selectTranslationStyle">native snippets (<img src="img/translate.png" class="icon"/>)</label>
+							<br/>
+							<label for="selectSpeechService">Speak snippets using</label>
+							<select id="selectSpeechService" title="Google Text-to-Speech service is limited to 100 characters, Bing 512 characters, Native 32767 characters.">
+								<option value="nativetts">Native</option>
+		                        <option value="googletts">Google (recommended)</option>
+		                        <option value="mstts">Bing</option>
+							</select>
+							<label for="selectSpeechService">speech services (<img src="img/speaker-volume-low2.png" class="icon"/>)</label>
+							<br/>
+							<div class="notice">Spoken languages are the same as the snippet translation languages defined below.<br/>Native speech capabilities & languages depend on your OS.</div>
+						</div>
+				    </td>
+			    </tr>
+
+			    <tr>
+				    <td>
+					    <div class="option_name" title="Shortcut to store highlights on the current page into temporary storage (or update the existing copy)">'Save Highlights Temporarily' shortcut</div>
+				    </td>
+                    <td>
+                	    <table>
+                		    <tr>
+                			    <td>
+								    <div id="divShortcutSaveSession" class="option_picker"></div>
+	               			    </td>
+                		    </tr>
+                	    </table>
+                    </td>
+                </tr>
+
+			    <tr>
+				    <td>
+					    <div class="option_name" title="Shortcut to store highlights on the current page into persistent storage (or update the existing copy)">'Save Highlights Persistently' shortcut</div>
+				    </td>
+                    <td>
+                	    <table>
+                		    <tr>
+                			    <td>
+								    <div id="divShortcutSaveLocal" class="option_picker"></div>
+	               			    </td>
+                		    </tr>
+                	    </table>
+                    </td>
+                </tr>
+
+				<tr>
+<!--				    <td class="option_name">Languages (Powered by <img src="img/branding/Google/small-logo.png"/>)</td>-->
+				    <td class="option_name">Translation Languages</td>
+                    <td>
+					    <div class="option_picker">
+							<input id="inputAutoTransHL" type="checkbox"/>
+							<label for="inputAutoTransHL" title="Automatically creates a translation of the highlight snippet as it is created. If this is not chosen, the translation is only done when explicitly chosen from the popup window.">Translate snippets (<img src="img/translate.png" class="icon"/>) as they are selected.</label>
+							<br/>
+							<label for="selectTransHLSrcLang" title="Direction of language translation. Applicable whether text is translated automatically or manually">From</label>
+							<select id="selectTransHLSrcLang" title="Language assumed for source of the translation. Choose 'Auto Detect' to let Google decide."></select>
+							<label for="selectTransHLDestLang" title="Direction of language translation. Applicable whether text is translated automatically or manually">into</label>
+							<select id="selectTransHLDestLang" title="Desired language of the outcome of the translation."></select>
+							<label for="selectTransHLDestLang">snippets.</label>
+							<br/>
+							
+							<input id="inputAutoTransNote" type="checkbox"/>
+							<label for="inputAutoTransNote" title="Automatically create a note from a translation of the entire highlight as it is selected">Create translated notes<!--(<img src="img/noteHide.png"/  style="vertical-align:middle">)--> from highlights as they are selected.</label>
+							<br/>
+							<label for="selectTransNoteSrcLang" title="Direction of language translation. Applicable whether text is translated automatically or manually">From</label>
+							<select id="selectTransNoteSrcLang" title="Language assumed for source of the translation. Choose 'Auto Detect' to let Google decide."></select>
+							<label for="selectTransNoteDestLang" title="Direction of language translation. Applicable whether text is translated automatically or manually">into</label>
+							<select id="selectTransNoteDestLang" title="Desired language of the outcome of the translation."></select>
+							<label for="selectTransNoteDestLang">notes.</label>
+					    </div>
+				    </td>
+				</tr>
+
+		</table>
+    	</div>
+    </div>
+
+    <div id="page2"  class="page" style="display:none">
+        <div class="content" style="width: 32em;">	<!-- width:520px; -->
+		    <div class="option_picker" style="text-align: right">
+	   	        <label for="selectHighlightStyle">Style</label>
+                <select id="selectHighlightStyle" title="Select from 2 different styles of highlight.">
+		            <option name="smear" value="smear">Brush</option>
+		            <option name="tile" value="tile">Tile</option>
+                </select>
+  	        </div>
+
+			<!--dynamic-->
+            <table id="tablehighlights" style="width: 100%">
+            </table>
+        </div>
+    </div>
+
+	<div id="page3" class="page"  style="display:none">
+		<div class="content">
+			<table style="width: 100%">
+				<tr>
+					<td class="option_name" title="Opens lookup session and queries the selected text, or the word under the cursor if none is selected.">Mouse activation combination</td>
+					<td class="option_picker">
+						<div id="divActivateMouseLookup"></div>
+					</td>
+				</tr>
+			
+				<tr>
+					<td class="option_name" title="Opens lookup session and queries the selected text, or the word under the cursor if none is selected.">'Open Lookup Session' shortcut</td>
+					<td class="option_picker">
+						<div id="divShortcutLookup"></div>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="option_name" title="Opens lookup session in a new window and queries the selected text, or the word under the cursor if none is selected.">'Open New Lookup Session' shortcut</td>
+					<td class="option_picker">
+						<div id="divShortcutLookupNew"></div>
+					</td>
+				</tr>
+
+				<tr>
+					<td class="option_name" title="Opens lookup session in a new window, but leaves it unqueried.">'Open New Empty Lookup Session' shortcut</td>
+					<td class="option_picker">
+						<div id="divShortcutLookupEmpty"></div>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="option_name">Default Selection</td>
+					<td class="option_picker">
+						<input id="inputWordUnderCursorLookup" type="checkbox"/>
+						<label for="inputWordUnderCursorLookup" title="If no word is selected, use the word currently under the mouse cursor (theoretically this slows page processing when the mouse is moved)">Use word under the cursor position if no text is selected.</label>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="option_name">Window Placement</td>
+					<td class="option_picker">
+						<input id="inputRememberPosLookup" type="checkbox"/>
+						<label for="inputRememberPosLookup" title="Position of window is stored when the page closes, and an attempt is made to put it in the same place next time">Try to place window in the position it was last in.</label>
+						<br/>
+						<button id="buttonForgetPosLookup" style="float:right;" title="If the window goes missing it may be positioned outside the browser. This will put it in the default position">Forget last window position</button>
+					</td>
+				</tr>
+				
+				<tr>
+					<td rowspan="2" style="text-align: right">
+						<select id="selectTemplate" style="width:100%;" size="20"></select>
+						<br/>
+						<span style="margin-right: 4px; float:left;">
+							<button id="buttonTemplateMoveUp" title="Move selected template up 1 place"><img src="img/navigation-090-button.png"/></button>
+							<button id="buttonTemplateMoveDown" title="Move selected template down 1 place"><img src="img/navigation-270-button.png"/></button>
+						</span>
+						<span>
+							<button id="buttonAddGroupStartTemplate" class="groupStartTemplate" title="Add item to list which serves as beginning of a group">Start Group</button>
+							<button id="buttonAddGroupEndTemplate" class="groupEndTemplate" title="Add item to list which ends the preceding group">End Group</button>
+						</span>
+						<span style="margin-left: 4px">
+							<button id="buttonAddTemplate" title="Add an empty template to the list">Add</button>
+						</span>
+						
+					</td>
+					<td class="option_picker">
+						<input id="inputTemplateEnabled" type="checkbox"/>
+						<label for="inputTemplateEnabled" title="Allow this template to be selected in a lookup session">Enable this template</label>
+						
+						<div class="subgroup1">
+							<div id="subgroupTemplateName">
+								<label class="sublabel" for="inputTemplateName">Name</label>
+								<input id="inputTemplateName" class="fullwidth" type="text" title="Template title that appears in the lookup session template selector"/>
+							</div>
+							<div id="subgroupNotTemplateName">
+								<label class="sublabel" for="inputTemplateURL">URL Template</label>
+								<input id="inputTemplateURL" class="fullwidth" type="text" title="URL template for desired page. GET method only. {searchTerms} is replaced with query text. Uses Opensearch syntax. See http://mycroft.mozdev.org for more details"/>
+								<br/>
+								<label class="sublabel" for="inputTemplateHash">URL Hash (currently ignored)</label>
+								<input id="inputTemplateHash" class="fullwidth"type="text" text="ID of element on the page to jump to. Currently ignored as a Chrome bug makes it behave wrongly"/>
+								<br/>
+								<label class="sublabel" for="divTemplateShortcut">Template-specific shortcut</label>
+								<div id="divTemplateShortcut" title="Shortcut to evoke this template in a lookup session whatever the selected template currently is"></div>
+								<label class="sublabel" for="textareaTemplateDescription">Notes</label>
+								<textarea id="textareaTemplateDescription" class="fullwidth" rows="6"></textarea>
+								<br/>
+								<input id="inputTemplateFramebuster" type="checkbox"/>
+								<label for="inputTemplateFramebuster" title="If the lookup window attempts to navigate the main page, then ask for confirmation. Note that this is only checked if the lookup attempts to replace the main page BEFORE it has finished loading."><a href="http://en.wikipedia.org/wiki/Framekiller" target="_blank">Framekiller</a> protection (only whilst loading)</label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="option_picker" style="vertical-align: bottom; text-align: right;">
+						<button id="buttonTemplateResetAll" style="float:left">Restore All Templates</button>
+					
+						<button id="buttonTemplateDefault" style="margin-right: 8px" class="defaultButton">Set As Default</button>
+						<button id="buttonRemoveTemplate">Delete</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div id="page4" class="page"  style="display:none">
+		<div class="content">
+			<table style="width: 100%">
+				<tr>
+					<td class="option_name" title="Opens tip and queries the selected text, or the word under the cursor if no text is selected.">Mouse activation combination</td>
+					<td class="option_picker">
+						<div id="divActivateMouseTip"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="option_name" title="Opens tip and queries the selected text, or the word under the cursor if no text is selected.">'Open Tip' shortcut</td>
+					<td class="option_picker">
+						<div id="divShortcutTip"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="option_name" title="Opens tip and queries the selected text, or the word under the cursor if no text is selected. Opens new tip even if other tips are displayed.">'Open Tip (non-Modal)' shortcut</td>
+					<td class="option_picker">
+						<div id="divShortcutTipMultiple"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="option_name">Default Selection</td>
+					<td class="option_picker">
+						<input id="inputWordUnderCursorTip" type="checkbox"/>
+						<label for="inputWordUnderCursorTip" title="If no word is selected, use the word currently under the mouse cursor (theoretically this slows page processing when the mouse is moved)">Use word under the cursor position if no text is selected.</label>
+					</td>
+				</tr>
+				<tr>
+					<td rowspan="2" style="text-align: right">
+						<select id="selectTipTemplate" style="width:100%;" size="20"></select>
+					</td>
+					<td class="option_picker" style="vertical-align: top;">
+						<label class="sublabel" for="divTipTemplateShortcut" title="Shortcut to query this service whatever the selected template currently is">Tip-specific shortcut</label>
+						<div id="divTipTemplateShortcut"></div>
+						<label class="sublabel" for="textareaTemplateDescription">Notes</label>
+						<textarea id="textareaTipTemplateDescription" rows="6" class="fullwidth" readonly="true"></textarea>
+						
+						<div id="divTipTemplateSpecificOptions"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="option_picker" style="text-align: right; vertical-align: bottom;">
+						<!--
+						<button id="buttonTipTemplateResetAll" style="float:left" onclick="OnClickRestoreDefaultTemplates(event)">Reset All Templates</button>
+						-->
+					
+						<button id="buttonTipTemplateDefault" class="defaultButton">Set As Default</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+		
+    <div id="page5" class="page" style="display:none">
+        <div class="content">
+            <table style="width: 100%">
+		        <tr>
+			        <td class="storedHighlightOptionNameCell">
+				        <div class="option_name"><img src="img/16session.png" alt="Temporarily stored pages icon" style="margin-right: 2px"/>Pages containing temporarily stored highlights</div>
+			        </td>
+			        <td>
+				        <select id="listSession" multiple="multiple" size="10" style="width: 100%" title="URLs of pages that temporarily have highlights associated with them. They are shown automatically when the page is visited, but when the last browser window is closed they will be lost.
+						Drag saved highlight files into this list to import them."></select>
+			        </td>
+		        </tr>
+		        <tr>
+			        <td colspan=2>
+				        <div class="option_picker" style="text-align: right">
+							<button id="btnImportSession" title="Import previously exported highlights into the temporarily stored highlights list. Add 'Alt' to import from a URL.">
+							Import</button>
+							<input class="hiddenfileinput" type="file" id="btnHiddenImportSession" multiple/>
+							
+							<button id="btnExportSession" title="Export selected temporarily stored highlights into a file">Export</button>
+							<button id="btnExportAllSession" title="Export all temporarily stored highlights into a file">Export All</button>
+
+							<input style="margin-left: 15px;" id="btnRemoveSession" type="button" value="Remove" />
+                            <input id="btnRemoveAllSession" type="button" value="Remove All" />
+                            <input id="btnGotoSession" type="button" value="Goto URL" />
+                        </div>
+			        </td>
+		        </tr>
+
+		        <tr>
+			        <td class="storedHighlightOptionNameCell">	
+				         <div class="option_name"><img src="img/16local.png" alt="Persistently stored pages icon"  style="margin-right: 2px"/>Pages containing persistently stored highlights</div>
+			        </td>
+			        <td>
+				        <select id="listLocal" multiple="multiple" size="10" style="width: 100%" title="URLs of pages that persistently have highlights associated with them. They are shown automatically when the page is visited, and will be remembered even when all browser windows are closed.
+						Drag saved highlight files into this list to import them."></select>
+			        </td>
+		        </tr>
+		        <tr>
+			        <td colspan=2>
+				        <div class="option_picker" style="text-align: right">
+							<button id="btnImportLocal" title="Import previously exported highlights into the persistently stored highlights list. Add Shift to import from a URL.">Import</button>
+							<input class="hiddenfileinput" type="file" id="btnHiddenImportLocal" multiple/>
+							
+							<button id="btnExportLocal" title="Export selected persistently stored highlights into a file. Add [Alt] to export in legacy JSON format.">Export</button>
+							<button id="btnExportAllLocal" title="Export all persistently stored highlights into a file. Add [Alt] to export in legacy JSON format.">Export All</button>
+							
+	                        <input style="margin-left: 15px;" id="btnRemoveLocal" type="button" value="Remove" />
+	                        <input id="btnRemoveAllLocal" type="button" value="Remove All" />
+                            <input id="btnGotoLocal" type="button" value="Goto URL" />
+                        </div>
+			        </td>
+		        </tr>
+
+	        </table>
+        </div>
+    </div>
+
+    <div id="page6" class="page" style="display:none">
+        <div class="content">
+            <div class="aboutheader">
+                <a href="http://code.google.com/p/simplehighlighter/issues/entry">Report an issue</a>
+                <a href="http://code.google.com/p/simplehighlighter/issues/list"> (see list) </a>
+                <a style="margin-left: 0.8em" href="http://code.google.com/p/simplehighlighter/wiki/Help">Help</a>
+            </div>
+
+            <iframe src="doc/releasenotes.txt" height="500px" style="width: 100%;"></iframe>
+
+            <div class="aboutfooter">
+            </div>
+        </div>
+    </div>
+
+	<div class="maincontrols">
+		<button id="buttonSave" title="Saves settings, and applies them immediately to existing open pages">Save Settings</button>
+	</div>
+
+    <br />
+	<div class="footer">
+	    Copyright <a href="mailto:einzelkind.apps@gmail.com">einzelkind</a> under <a href="http://creativecommons.org/licenses/GPL/2.0/">GPL 2.0</a>
+		<br/><br/>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick"/>
+			<input type="hidden" name="hosted_button_id" value="TXVYJTNXQKPCY"/>
+			<input type="image" src="img/branding/paypal/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"/>
+			<img alt="" border="0" src="img/branding/paypal/pixel.gif" width="1" height="1"/>
+		</form>
+    </div>
+    
+    <div class="restore">
+		<a id="restoredefaults" href="#" title="Restores all settings to their initial values. Does not delete stored highlights">Restore Defaults Settings</a>
+    </div>
+</body>
+
+</html>
+
+
+
+

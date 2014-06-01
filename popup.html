@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="js/localstorage.js"></script>
+	
+    <script type="text/javascript" src="js/shortcut/shortcut.js"></script>
+    <script type="text/javascript" src="js/parsers/googleapi.js"></script>
+    <script type="text/javascript" src="js/parsers/bing.js"></script>
+
+    <script type="text/javascript" src="js/tippopup.js"></script>
+    
+	<script type="text/javascript" src="js/popup.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/popup.css" />
+</head>
+
+<body id="theBody">
+    <div id="header">
+		<span id="headerleftbuttons">
+			<a class="headerbutton" href="#" id="pin"><img src="img/pinOut.png" /></a>
+				
+			<a class="headerbutton" style="margin-left: 8px; display: none;" href="#" id="session" title="Temporarily store current location of highlights & notes for this page, and attempt to restore them when I return to this page.
+
+This information is LOST when all browsers are closed.
+
+To keep the information even after all browsers are closed, store persistently with the RED icon to the right."><img src="img/disk-green.png" /></a>
+			<a class="headerbutton" style="display: none;" href="#" id="local" title="Persistently store current location of highlights & notes for this page, and attempt to restore them when I return to this page.
+
+This information is REMEMBERED even after all browsers are closed.
+
+To forget the information when all browsers are closed, store temporarily with the GREEN icon to the left."><img src="img/disk-red.png"/></a>
+			
+			<a class="headerbutton" style="display: none;" href="#" id="deleteStorage" title="Remove this page's highlights from storage"><img src="img/disk-black-delete.png" /></a>
+
+	        <a class="headerbutton" id="import" style="margin-left: 8px" href="#" title="Import highlights from a file saved previously by Simple Highlighter onto this page.
+This will attempt to restore the highlights and notes back onto the page. Add [Alt] to import from a URL.">
+				<img alt="Import" class="headerbuttonimage" src="img/document-list-import.png" />
+			</a>	
+			<input class="hiddenfileinput" type="file" id="btnHiddenImport"/>
+	        <a class="headerbutton" id="export" href="#" title="Export highlights & notes from the current page into a file, which can then be shared, stored, or imported back onto this page. NB: You'll probably want to rename the file to something more appropriate"><img alt="Export" src="img/document-list-export.png" /></a>	
+			<a class="headerbutton" href="#" id="removeAll" title="Remove all highlights from just this page"><img src="img/document-list-removeall.png" /></a>
+			
+	        <a class="headerbutton" id="report" style="margin-left: 8px" href="#" title="Open a new tab containing a list of the highlights and notes on just this page. Hold [Shift] to use relative dates.
+
+To save the page as an HTML file, hold [Alt] whilst pressing the button and rename the 'download' file to something more appropriate that ends in .html, such as 'summary.html'.">
+				<img class="headerbuttonimage" src="img/block--arrow.png" />
+			</a>	
+			
+		</span>
+
+		<span id="titletext"></span>
+
+        <span id="findcursor">
+			<a class="headerbutton" href="#" id="cancel" title="Cancel [X]" style="display:none" ><img src="img/cross-blue.png" /></a>
+            <a class="headerbutton" href="#" id="prev" title="Identify previous highlight [K], First [Ctrl+K]" ><img src="img/navigation-180-button.png"/></a>
+            <a class="headerbutton" href="#" id="next" title="Identify next highlight [J], Last [Ctrl+J]" ><img src="img/navigation-000-button.png" /></a>
+        </span>
+
+        <span id="headerrightbuttons">
+<!--        <a class="headerbutton" href="options.html" target="_blank" title="Options" ><img alt="Options" src="img/options.png" /></a>-->
+            <a class="headerbutton" href="#" id="quicklanguage" style="margin-right: 3px">
+				<img class="quicklanguagebarflag" id="quicklanguagebarsrcflag"/>
+				<img id="quicklanguagebardirection" src="img/arrow-000-small-cropped.png"/>
+				<img class="quicklanguagebarflag" id="quicklanguagebardestflag"/>
+				<img class="headerbuttonimage" src="img/wrench-language.png" />
+			</a>
+<!--			<a class="headerbutton" href="#" id="alltrans" onclick="OnClickVisibilityButtons(this)" ><img src="img/allTrans.png"/></a>-->
+			<a class="headerbutton" href="#" id="allnotes" style="display: none">
+				<img class="headerbuttonimage" src="img/allNotes.png"/>
+			</a>
+        </span>
+		
+		<div id="importbar" style="display: none;">
+			<select id="selectImportURL" style="font-size: inherit; width: 100%;" title="List of URLs for the highlights contained in the chosen file" >
+			</select>
+			<br/>
+			<button id="import_gotourl" style="font-size: inherit; float:left;" disabled="disabled" title="Navigate to the URL selected. NB: you need to manually import the highlights when the page is loaded">Goto URL</button>
+			<span class="importbartext" style="display: none;">No URL matches the current page</span>
+			<button id="import_import" style="font-size: inherit;" title="Import the highlights associated with the selected URL onto the current page">Import onto Page</button>
+			<button id="import_close" style="font-size: inherit;">Close</button>
+		</div>
+		
+		
+		<div id="quicklanguagebar" style="display:none;">
+<!--
+		<span class="quicklanguagebartext" style="font-weight: bold">Current Translation Setting</span>
+			<br/>
+-->
+			<span style="float: left; opacity: 0.3; height: 0;" title="Settings affect the source and destination languages of translations, and the preferred language when speaking each of these snippets">
+				<img src="img/translate.png">
+				<img src="img/speaker-volume-low2.png">
+			</span>
+
+			<label for="selectTransHLSrcLang">From</label>
+			<select id="selectTransHLSrcLang" style="font-size: inherit;" title="Assumed language for source of the snippet translation. Choose 'Auto Detect' to let Google decide.
+
+Also used as spoken language for untranslated snippets, but 'Auto Detect' is only supported with the Bing text to speech service. You must set the language manually for Google & Native speech."></select>
+			<label for="selectTransHLDestLang">to</label>
+			<select id="selectTransHLDestLang" style="font-size: inherit;" title="Desired language of the outcome of the translation. Also used as spoken language for translated snippets."></select>
+
+			<br/>
+
+			<button id="quicklanguagebar_reset" style="font-size: inherit; float:left;" title="Reset language pair to default setting">Reset</button>
+
+<!--		
+			<span style="margin-right: 1em;">Powered by<img src="img/branding/Google/small-logo.png" style="padding-left: 1px; vertical-align: middle;"></span>
+-->			
+			<span class="quicklanguagebartext" id="translatedtoday" style="display:none;"><span id="numtranslatedchars"></span> characters translated today</span>
+			
+			<button id="quicklanguagebar_set" style="font-size: inherit;" disabled="disabled" title="Use this language pair as your default snippet translation setting. Any currently translated and visible snippets will be retranslated using the new settings">Set</button>
+			<button id="quicklanguagebar_close" style="font-size: inherit;" title="Close the quick language setting bar.">Close</button>
+		</div>
+    </div>
+	
+    <div id="highlights">
+        <div id="nohighlightsmessage" style="display:none"><br />Nothing to see here, move along</div>
+    </div>
+    
+<!--	<span id="translationsBy" style="display:none;">Translation by<img src="img/branding/Google/small-logo.png" style="padding-left: 1px; vertical-align: middle; "></span>-->
+	<div id="donate">
+		<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TXVYJTNXQKPCY" target="_blank" style="text-decoration:none">
+			<img src="img/branding/paypal/btn_donate_SM.gif" alt="PayPal - The safer, easier way to pay online!" border="0"/>
+		</a>
+		<br/>
+		<a id="removedonate" href="#" style="text-decoration:none">Hide this donation request permanently (always available on Options page)</a>
+	</div>
+
+	<span id="translationsBy" style="display:none;">Translation by<img src="img/branding/bing/bing.png" style="padding-left: 3px; vertical-align: middle; "></span>
+	<span id="speechByBing" class="speechBy" style="display:none;">Speech by<img src="img/branding/bing/bing.png" style="padding-left: 3px; vertical-align: middle; "></span>
+	<span id="speechByGoogle" class="speechBy" style="display:none;">Speech by<img src="img/branding/Google/small-logo.png" style="padding-left: 1px; vertical-align: middle; "></span>
+	
+    <div id="infobar" style="display: none;"></div>
+</body>
+
+</html>
