@@ -367,8 +367,8 @@ function OnLoad() {
 	// div.style.display = ((count % DONATE_MODULO) == 5 ? "" : "none");
 		
 	// hide donate button based on pref
-	var div = document.getElementById(ID_DIV_DONATE);
-	div.style.display = (GetPreference(PREFERENCE_POPUP_REMOVEDONATE) == PREFBOOL_TRUE ? "none" : "");
+	// var div = document.getElementById(ID_DIV_DONATE);
+	// div.style.display = (GetPreference(PREFERENCE_POPUP_REMOVEDONATE) == PREFBOOL_TRUE ? "none" : "");
 	
 	// smargin that will be added to the right side when scroll bars are automatically shown
 	_marginLeft = GetScrollBarWidth() + parseFloat(window.getComputedStyle(document.body)["margin-right"]);
