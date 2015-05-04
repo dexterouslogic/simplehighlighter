@@ -1,0 +1,25 @@
+
+var Twitter={ERROR_UNKNOWN:"An unknown error has occurred",WARNING_NORESULTS:"No Tweet results for <b><<TEXT>></b>",Request:function(request){var xhr=new XMLHttpRequest();var result_type=request.template.sessionData.refresh==true?"recent":request.template.options.result_type;var url="http://search.twitter.com/search.atom?"+"rpp="+request.template.options.per_page+"&result_type="+result_type;if(request.template.sessionData.page!=null)
+url+="&page="+request.template.sessionData.page;if(request.template.sessionData.refresh==true&&request.template.options.refresh_style=="append"){}
+else{if(request.template.sessionData.max_id)
+url+="&max_id="+request.template.sessionData.max_id;if(request.template.sessionData.offset_recent_correction&&request.template.sessionData.page!=1&&request.template.sessionData.page!=null)
+url+="&offset_recent_correction="+request.template.sessionData.offset_recent_correction;if(request.template.sessionData.refresh==true&&request.template.sessionData.since_id!=null)
+url+="&since_id="+request.template.sessionData.since_id;}
+url+="&q="+encodeURIComponent(request.text);xhr.open('GET',url,true);xhr.Twitter=this;xhr.onreadystatechange=function(){if(xhr.readyState==4){if(xhr.status!=200){var errorHTML=(xhr.status==0?Twitter.ERROR_UNKNOWN:xhr.status+" "+xhr.statusText);SendRequestWithTabIfPossible(request.tab,{msg:request.msgSet,index:request.index,templateId:request.template.id,data:{errorHTML:errorHTML}});return;}
+var data=this.Twitter.Parse(xhr.responseXML,request);if(data){SendRequestWithTabIfPossible(request.tab,{msg:request.msgSet,index:request.index,templateId:request.template.id,data:data,});}}};xhr.send(null);},Parse:function(xmlDoc,request){function GetHREFArg(xmlDoc,nodeName,relAttrValue,argName){var node=Twitter.GetNodeByRel(xmlDoc,nodeName,relAttrValue);if(node){var href=node.attributes["href"].nodeValue;if(href!=null){if(argName==null)
+return href;else
+return href.GetSearchVariables()[argName];}}
+return null;}
+var since_id=GetHREFArg(xmlDoc,"link","refresh","since_id");var moreResultsUrl=GetHREFArg(xmlDoc,"link","alternate",null);var offset_recent_correction=GetHREFArg(xmlDoc,"link","next","offset_recent_correction");var max_id=GetHREFArg(xmlDoc,"link","next","max_id");var is_previous=this.GetNodeByRel(xmlDoc,"link","previous")?true:false;var is_next=this.GetNodeByRel(xmlDoc,"link","next")?true:false;var entries=xmlDoc.getElementsByTagName("entry");var arrObjEntries=[];var warningHTML=null;if(entries.length==0){var format=Twitter.WARNING_NORESULTS.replace("<<TEXT>>",request.text);warningHTML=format;}
+else{for(var i=0,entry;entry=entries[i];i++){var obj={author:{},content:null,published:null,result_type:null,recent_retweets:null,url:null,};obj.author.srcImage=Twitter.GetNodeByRel(entry,"link","image").attributes["href"].nodeValue;var authors=entry.getElementsByTagName("author");if(authors.length==1){var names=authors[0].getElementsByTagName("name");if(names.length==1){var uris=authors[0].getElementsByTagName("uri");if(uris.length==1){var name=names[0].textContent;var realname=null;var start=name.indexOf('(');var end=name.indexOf(')');if(start!=-1&&end!=-1&&(start+1)<end){realname=name.substring(start+1,end);name=name.substring(0,Math.max(0,start-1));}
+obj.author.name=name;obj.author.realname=realname;obj.author.uri=uris[0].textContent}}}
+var contents=entry.getElementsByTagName("content");if(contents.length==1){obj.content=Twitter.AddAttributeToTagNames(contents[0].textContent,"A","target","_blank");}
+var publisheds=entry.getElementsByTagName("published");if(publisheds.length==1)
+obj.published=new Date(publisheds[0].textContent);var metadatas=entry.getElementsByTagName("metadata");if(metadatas.length==1){var resultTypes=metadatas[0].getElementsByTagName("result_type");if(resultTypes.length==1)
+obj.result_type=resultTypes[0].textContent;var recentRetweets=metadatas[0].getElementsByTagName("recent_retweets");if(recentRetweets.length==1)
+obj.recent_retweets=recentRetweets[0].textContent;}
+obj.url=GetHREFArg(entry,"link","alternate",null);arrObjEntries.push(obj);}}
+return({moreResultsUrl:moreResultsUrl,page:request.template.sessionData.page?request.template.sessionData.page:1,entries:arrObjEntries,since_id:since_id,offset_recent_correction:offset_recent_correction,max_id:max_id,warningHTML:warningHTML,is_previous:is_previous,is_next:is_next,});},GetNodeByRel:function(xmlDoc,nodeName,attrValueRel){var elems=xmlDoc.getElementsByTagName(nodeName);for(var i=0;i<elems.length;i++){if(elems[i].attributes["rel"].nodeValue==attrValueRel)
+return elems[i];}
+return null;},AddAttributeToTagNames:function(html,tagName,attrName,attrValue){var div=document.createElement('div');div.innerHTML=html;var elems=div.getElementsByTagName(tagName);for(var q=0;q<elems.length;q++)
+elems[q].setAttribute(attrName,attrValue);return div.innerHTML;},}

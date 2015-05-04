@@ -1,0 +1,304 @@
+body{
+	width: 32em;				/*350px*/
+	font-size: 10pt;	/*small*/
+	font-family: sans-serif;	/*'Myriad Pro', Myriad, Corbel, Vegur, 'Gill Sans', 'Gill Sans MT', 'Helvetica Neue', Helvetica, Tahoma, Arial, sans-serif;*/
+	
+	-webkit-user-select: none;
+}
+
+/****************************************/
+
+#header{
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+	.colourSession{
+		border-color: #08FCB8;
+	}
+	.colourLocal{
+		border-color: #FC4C08;
+	}
+	.colourNoStore{
+		border-color: Gray;
+	}
+	/*.colourDirty{
+		border-color: #FCD608;
+	}*/
+	
+	.headerbutton{
+		color: transparent;
+		text-decoration: none;
+	}
+
+#headerleftbuttons{
+	margin-right: 6px;
+}
+
+	.hiddenfileinput{
+		visibility: hidden;
+		position: fixed;
+	}
+
+#titletext
+{
+	vertical-align: top;
+	/*color: Gray;*/
+	/*text-shadow: 1px 1px 1px gray;*/
+}
+	.number{
+		font-weight: bolder;
+	}        
+
+#findcursor
+{
+	float: right;
+	margin-left: 6px;
+}
+
+#headerrightbuttons{
+	float: right;
+}
+	#quicklanguagebardirection{
+		vertical-align: top;
+		margin-top: 5px;
+	}
+	
+	.quicklanguagebarflag{
+		vertical-align: top; 
+		margin-top: 3px;
+	}
+
+	.quicklanguagebuttonselected{
+		background: #e2f2ff;
+		border: 1px solid #30a5e2;
+		margin: -1px;
+		border-radius: 2px;
+	}
+
+	.importbuttonselected{
+		background: #ece2c4;
+		border: 1px solid #ecc963;
+		margin: -1px;
+		border-radius: 2px;
+	}
+	
+	
+	
+	.buttonselected{
+		background: lightGrey;
+		border: 1px solid gray;
+		margin: -1px;
+		border-radius: 2px;
+	}
+
+#quicklanguagebar{
+	font-size: xx-small;
+	background: #e2f2ff;
+	padding: 2px;
+	/*margin-top: -3px;*/
+	text-align: right;
+}
+
+	.quicklanguagebartext{
+		font-style: italic;
+		color: #30a5e2;
+	}
+	
+	.translateAnything{
+	color: green;
+	}
+
+
+#importbar{
+	font-size: xx-small;
+	background: #ece2c4;
+	padding: 2px;
+	/*margin-top: -3px;*/
+	text-align: right;
+}
+	#selectImportURL{
+		margin-bottom: 2px;
+	}
+
+	.importbartext{
+		font-style: italic;
+		color: grey;
+	}
+
+	
+/**********************************/
+
+.highlights{
+}
+	#orderedlistHighlights{
+		-webkit-padding-start: 2em;
+	}
+		#orderedlistHighlights li{
+			-webkit-transition-property: margin, background-color;
+			-webkit-transition-duration: 1s, 0.5s;
+			-webkit-transition-timing-function: ease, ease;
+		}
+		
+			.appendedTranslation{
+				/*margin-left: 0.5em;*/
+				font-style: italic;
+				color: #2CA4DF;
+				text-decoration: none;
+			}
+				.spansource{
+					text-decoration: none;
+					height: 0px;
+					margin-right: 0.5em;
+				}
+					.sourceflag{
+                        /* bing doesnt detect source so always hide flag*/
+                        display: none;
+						
+                        vertical-align: top;
+						margin-top: 2px;
+						margin-right: 2px;
+					}
+					.sourcedirection{
+						vertical-align: top;
+						margin-top: 4px;
+					}
+						
+					
+			
+			
+			.waiting{
+				height: 1px;
+				float:right;
+			}
+			
+			.spanspeech{
+				float: right;
+				text-decoration: none;
+				height: 0px;
+			}
+				.speechactive{
+					-webkit-animation-name: pulse;
+					-webkit-animation-duration: 1s;
+					-webkit-animation-iteration-count: infinite;
+					-webkit-animation-direction: alternate;	
+					-webkit-animation-timing-function: ease-in-out;				
+				}
+				.speechflag{
+					vertical-align: top;
+					margin-top: 2px;
+					margin-left: 2px;
+				}
+
+	#nohighlightsmessage{
+		text-align:center;
+		font-style: italic;
+		color: Gray;
+		
+		-webkit-animation-name: fadein;
+		-webkit-animation-duration: 2s;
+		-webkit-animation-iteration-count: 1;
+		-webkit-animation-timing-function: ease-in-out;				
+	}
+
+	.note {
+		color: Gray;
+		font-size:smaller;
+		/*font-style: italic;*/
+		text-decoration: none;
+		margin-left: 0.5em;
+	}
+/*
+a 
+{
+	cursor: pointer;
+}
+*/
+	.editnote {
+		/*color: Gray;*/
+		font-size: smaller;
+		font-family: inherit;
+		margin-left: 0.5em;
+		width: 95%;
+	}
+
+	/* class containing right floating buttons per list item *******************************/
+	
+	.addremdel{
+		margin-left: 5px;
+		float: right;
+		height: 14px;
+	}
+		.lookup{
+			margin-left: 1px;
+		}
+	  
+/********************************/
+
+#donate{
+	text-align: center;
+	margin-top: 2em;
+	font-size: x-small;
+}
+
+#translationsBy{
+	/*text-align: right;*/
+	float: right;
+	padding-bottom: 8px;
+	font-size: x-small;
+	/*background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(#E2F2FF));*/
+	color: #2CA4DF;
+	
+	/*-webkit-transition: opacity 0.5s ease;*/
+}
+
+.speechBy{
+	/*text-align: right;*/
+	float: left;
+	padding-bottom: 8px;
+	font-size: x-small;
+	color: grey;
+	
+	/*-webkit-transition: opacity 0.5s ease;*/
+}
+
+#infobar{
+	text-align: center;
+/*	background-color: #ffffc5;*/
+	background-color: #FFF299;
+}
+
+/********************************/
+
+@-webkit-keyframes glowAnimation
+{
+	from 
+	{
+		-webkit-box-shadow: red 0px 0px 0px;
+	}
+	
+	to
+	{
+		-webkit-box-shadow: red 0px 0px 3px;
+	}
+}
+
+@-webkit-keyframes pulse {
+ 0% {
+   opacity: 1;
+ }
+ 100% {
+   opacity: 0;
+ }
+}
+
+@-webkit-keyframes fadein {
+ 0% {
+   opacity: 0;
+/*   margin-left: 25px;*/
+ }
+ 100% {
+   opacity: 1;
+/*   margin-left: 0px;*/
+ }
+}

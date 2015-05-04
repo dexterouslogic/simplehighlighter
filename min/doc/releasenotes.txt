@@ -1,0 +1,9 @@
+SIMPLE HIGHLIGHTER 2 - Less Simple, More Highlighter.
+(c) 2010-2014 einzelcode.com
+
+IMPORTANT: As of now this extension is officially deprecated. That means, barring natural disaster, it won't be updated again, and will fall into (even more) disrepair. Please don't contact me regarding support for this particular extension.
+
+I *STRONGLY* recommended you use my new 'Super Simple Highlighter' extension, which is a more simple, modern rewrite of the core elements. Either search for it, or go directly to https://chrome.google.com/webstore/detail/super-simple-highlighter/hhlhjgianpocpoppaiihmlpgcoehlhio
+
+DOCUMENTATION
+https://docs.google.com/document/d/1YBbCV-N6mjwaltjwBbfex10qdFC4V5dKCf2B1DQegeE/pub
